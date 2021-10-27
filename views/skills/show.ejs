@@ -1,12 +1,14 @@
 <%- include ('../partials/head.ejs')%>
 <body>
   <%- include('../partials/nav.ejs')%>
+  <div class = 'show'>
   <% if(error) { %>
     <h2><%= error %></h2>
   <% } else { %>
-    <h2>Todo #<%= skill._id %></h2>
+    <h2>Developer Skill #<%= skill._id %></h2>
     <h3><%= skill.skill %></h3>
-    <p>Qualified? <%= skill.able %></p>
+    <p><b>Qualified? </b><%= skill.able %></p>
   <% } %>
+</div>
 	<a href="/skills">Go back</a>
 </body>
