@@ -8,6 +8,7 @@ import logger from 'morgan'
 // import routers
 import { router as indexRouter } from './routes/index.js'
 import { router as skillsRouter } from './routes/skills.js'
+import { appendFileSync } from 'fs'
 
 // set up app
 const app = express()
@@ -27,11 +28,17 @@ app.use(cookieParser())
 app.use(
   express.static(
     path.join(path.dirname(fileURLToPath(import.meta.url)), 'public')
-  )
-)
-
-// mounted routers
-app.use('/', indexRouter)
+    )
+    )
+app.use(function(req, res, next){
+  console.log('Hello developer skills this is a useless piece of middleware used to sample what middleware actually does so it is useful afterall!')
+  req.time = new Date().toLocaleDateString()
+  next()
+})
+    
+    
+    // mounted routers
+    app.use('/', indexRouter)
 app.use('/skills', skillsRouter)
 
 // catch 404 and forward to error handler
