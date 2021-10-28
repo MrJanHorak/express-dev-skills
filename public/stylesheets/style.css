@@ -13,8 +13,10 @@ h2 {
   text-decoration: underline;
 }
 
+
 a {
   color: #00B7FF;
+  font-size: 18px;
 }
 
 ul {
@@ -42,4 +44,15 @@ ul li {
   background-color: darkgrey;
   border-radius: 3px;
   padding-left: 25px;
+}
+
+.delete-form {
+  display:inline-block;
+  margin-right: 5px;
+}
+
+.delete-form button {
+  color: red;
+  background-color: rgb(97, 95, 95);
+  border-radius: 25%;
 }
