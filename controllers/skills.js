@@ -14,17 +14,27 @@ function show(req,res) {
   skillDb.findById(req.params.id, function(error, skill){
     res.render('skills/show', {
       skill: skill,
-      error: error
+      error: error,
+      time: req.time,
     })
   })
 }
 
 function newSkill(req, res) {
-  res.render('skills/new')
+  res.render('skills/new', {
+    time: req.time
+  })
+}
+
+function create(req,res) {
+  skillDb.create(req.body, function(error, skill){
+    res.redirect("/skills")
+  })
 }
 
 export {
   index,
-  show
+  show,
   newSkill as new,
+  create,
 }

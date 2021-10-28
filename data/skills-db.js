@@ -37,7 +37,15 @@ const findById = (id, callback) =>{
   }
 }
 
+function create(skill, callback) {
+  skill._id = Date.now() % 1000000
+  skill.able = "Nope not yet, cause its a new skill"
+  skills.push(skill)
+  return callback(null, skill)
+}
+
 export { 
 	find,
-  findById
+  findById,
+  create,
 }

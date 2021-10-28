@@ -4,11 +4,12 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
+import methodOverride from 'method-override'
 
 // import routers
 import { router as indexRouter } from './routes/index.js'
 import { router as skillsRouter } from './routes/skills.js'
-import { appendFileSync } from 'fs'
+
 
 // set up app
 const app = express()
@@ -28,17 +29,18 @@ app.use(cookieParser())
 app.use(
   express.static(
     path.join(path.dirname(fileURLToPath(import.meta.url)), 'public')
-    )
-    )
+  )
+)
 app.use(function(req, res, next){
-  console.log('Hello developer skills this is a useless piece of middleware used to sample what middleware actually does so it is useful afterall!')
+  console.log('Hello, welcome to developer skills!')
   req.time = new Date().toLocaleDateString()
   next()
 })
+app.use(methodOverride('_method'))
     
     
-    // mounted routers
-    app.use('/', indexRouter)
+// mounted routers
+app.use('/', indexRouter)
 app.use('/skills', skillsRouter)
 
 // catch 404 and forward to error handler
