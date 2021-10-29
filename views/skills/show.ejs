@@ -1,15 +1,18 @@
 <%- include ('../partials/head.ejs')%>
-<body>
   <%- include('../partials/nav.ejs')%>
   <div class = 'show'>
   <% if(error) { %>
     <h2><%= error %></h2>
   <% } else { %>
     <h2>Developer Skill #<%= skill._id %></h2>
-    <h3><%= skill.skill %></h3>
+    <h3><%= skill.devSkill %></h3>
     <p><b>Qualified? </b><%= skill.able %></p>
   <% } %>
+  <form action="/skills/<%= skill._id %>/edit" class="edit-form" method="GET">
+    <button type="submit">Edit</button>
+  </form>
+  <form action="/skills/<%= skill._id %>?_method=DELETE" class="delete-form" method="POST">
+    <button type="submit">X</button>
+  </form>
 </div>
-	<a href="/skills">Go back</a>
-</body>
-</html>
+<%- include('../partials/footer.ejs')%>

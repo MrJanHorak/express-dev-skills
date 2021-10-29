@@ -38,10 +38,28 @@ function deleteSkill(req, res) {
   })
 }
 
+function edit(req, res) {
+  skillDb.findById(req.params.id, function(error, skill){
+    res.render('skills/edit', {
+      skill: skill,
+      error: error,
+      time: req.time,
+    })
+  })
+}
+
+function update(req ,res){
+  skillDb.findByIdAndUpdate(req.params.id, req.body, function(error, skill) {
+      res.redirect('/skills/')
+    })
+  }
+
 export {
   index,
   show,
   newSkill as new,
   create,
   deleteSkill as delete,
+  edit,
+  update,
 }

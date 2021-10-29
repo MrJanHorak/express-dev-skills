@@ -1,0 +1,17 @@
+<%- include ('../partials/head.ejs')%>
+  <%- include('../partials/nav.ejs')%>
+  <div class='editScreen'>
+  <h2>Edit Skill</h2>
+  <h3>Developer Skill #<%= skill._id %></h3>
+  <form action="/skills/<%= skill._id %>?_method=PUT" method="POST" autocomplete="off">
+    <input type="text" name="devSkill" value="<%= skill.devSkill %>">
+    <select name="able">
+        <option value="Junior">Junior</option>
+        <option value="Getting there">Getting there</option>
+        <option value="Pretty Good">Pretty Good</option>
+        <option value="The real deal!">The real deal!</option>
+      </select>
+    </label><br>
+    <button type="submit">Save skill</button>
+  </form>
+</div>
